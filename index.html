@@ -1,0 +1,57 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aqeedah Awwalan</title>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="/imgs/Aqeedah.png">
+
+  <!-- link to css file -->
+  <link rel="stylesheet" href="src/main.css">
+
+  <!-- phosphor icons -->
+  <link rel="stylesheet" href="/src/bold.css">
+  <link rel="stylesheet" href="/src/fill.css">
+  <link rel="stylesheet" href="/src/regular.css">
+</head>
+
+<body>
+  <header class="items-center justify-between">
+    <img src="/imgs/Aqeedah.png" alt="Aqeedat Media logo" class="w-16">
+
+    <div class="w-fit items-center justify-end text-4xl text-green">
+      <button id="menu-o" class="ph-bold ph-list"></button>
+      <button id="menu-c" class="hidden ph-bold ph-x"></button>
+    </div>
+
+    <nav
+      class="hidden fixed top-16 right-7 w-fit flex-col items-start justify-start px-7 py-11 shadow-lg shadow-green/15 rounded-2xl bg-white text-green">
+      <a href="" class="hover:opacity-70">Home</a>
+      <a href="" class="hover:opacity-70">Sheikhs</a>
+      <a href="" class="hover:opacity-70">About</a>
+      <a href="" class="hover:opacity-70">Donate</a>
+    </nav>
+  </header>
+
+  <main id="home" class="flex-col items-start justify-start gap-7">
+    <section class="w-full flex-col items-start justify-start gap-1.5 bg-green px-pw py-11">
+      <h1 class="text-4xl text-white text-start font-bold capitalize">listen learn & enjoy!</h1>
+      <p class="text-white/75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vitae esse
+        ipsum libero distinctio eos aperiam alias sit ipsam laborum expedita hic nisi architecto autem possimus amet,
+        enim laudantium quis.</p>
+    </section>
+
+    <section class="w-full flex-col items-start justify-start gap-3 px-pw">
+      <h2 class="text-3xl text-green font-bold capitalize">Our Sheikhs</h2>
+      <div id="sheikhs" class="w-full grid grid-flow-col gap-5"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./src/script.js"></script>
+</body>
+
+</html>
