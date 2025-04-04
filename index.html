@@ -40,18 +40,25 @@
   <main id="home" class="flex-col items-start justify-start gap-7">
     <section class="w-full flex-col items-start justify-start gap-1.5 bg-green px-pw py-11">
       <h1 class="text-4xl text-white text-start font-bold capitalize">listen learn & enjoy!</h1>
-      <p class="text-white/75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vitae esse
-        ipsum libero distinctio eos aperiam alias sit ipsam laborum expedita hic nisi architecto autem possimus amet,
-        enim laudantium quis.</p>
+      <p class="text-white/75">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat, impedit quia.</p>
+
+      <div class="relative w-full items-center justify-start overflow-hidden">
+        <input type="search" name="search" id="search"
+          class="w-full text-base text-shade/70 px-5 py-3.5 rounded-lg outline outline-2 outline-offset-2 outline-shade border-2 border-shade bg-white placeholder:text-shade/45"
+          placeholder="Search here...">
+        <button
+          class="search ph ph-magnifying-glass absolute right-0 h-full aspect-square text-3xl text-shade/75 bg-white rounded-r-lg"></button>
+      </div>
     </section>
 
     <section class="w-full flex-col items-start justify-start gap-3 px-pw">
       <h2 class="text-3xl text-green font-bold capitalize">Our Sheikhs</h2>
-      <div id="sheikhs" class="w-full grid grid-flow-col gap-5"></div>
+      <div id="sheikhs" class="w-full grid grid-flow-row gap-5"></div>
     </section>
   </main>
 
   <script type="module" src="./src/script.js"></script>
+
 </body>
 
 </html>
