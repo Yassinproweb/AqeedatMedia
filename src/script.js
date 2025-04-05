@@ -61,7 +61,7 @@ async function fetchAudio() {
         <span
           class="play-audio size-16 flex-shrink-0 aspect-square flex items-center justify-center rounded-full ph-fill ph-play text-green text-3xl border-2 border-green bg-transparent"></span>
         <div class="w-full flex-col items-start justify-start gap-1.5">
-          <h4 class="text-xl text-green font-bold leading-tight">${audio.darsu}</h4>
+          <h4 class="text-base text-green font-bold leading-tight line-clamp-2">${audio.darsu}</h4>
           <p class="text-xs text-shade/55 font-medium">${audio.name}</p>
         </div>
       </div>
