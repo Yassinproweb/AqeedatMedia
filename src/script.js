@@ -15,22 +15,22 @@ async function fetchData() {
         <div class="div-banner absolute bottom-0 left-0 w-full flex items-center justify-between px-3.5 py-3 bg-white text-shade">
           <div class="w-fit items-center justify-start gap-0.5">
             <h4 class="text-6xl font-bold">${dta.duruus}</h4>
-            <span class="w-fit flex flex-col items-center justify-center gap-0 text-green font-medium">
-              <i class="ph-fill ph-file-audio text-3xl"></i>
+            <span class="w-fit flex flex-col items-center justify-center gap-0 text-shade font-bold">
+              <i class="hgi hgi-stroke hgi-folder-audio text-3xl"></i>
               <span class="text-xs">Duruus</span>
             </span>
           </div>
           <div class="w-fit items-center justify-start gap-0.5">
             <h4 class="text-6xl font-bold">${dta.books}</h4>
-            <span class="w-fit flex flex-col items-center justify-center gap-0 text-green font-medium">
-              <i class="ph-fill ph-books text-3xl"></i>
+            <span class="w-fit flex flex-col items-center justify-center gap-0 text-shade font-bold">
+              <i class="hgi hgi-stroke hgi-book-04 text-3xl"></i>
               <span class="text-xs">Books</span>
             </span>
           </div>
           <div class="w-fit items-center justify-start gap-0.5">
             <h4 class="text-6xl font-bold">${dta.audios}</h4>
-            <span class="w-fit flex flex-col items-center justify-center gap-0 text-green font-medium">
-              <i class="ph-fill ph-microphone text-3xl"></i>
+            <span class="w-fit flex flex-col items-center justify-center gap-0 text-shade font-bold">
+              <i class="hgi hgi-stroke hgi-mic-01 text-3xl"></i>
               <span class="text-xs">Audios</span>
             </span>
           </div>
@@ -59,7 +59,7 @@ async function fetchAudio() {
       <div role="button"
         class="w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
         <span
-          class="play-audio size-16 flex-shrink-0 aspect-square flex items-center justify-center rounded-full ph-fill ph-play text-green text-3xl border-2 border-green bg-transparent"></span>
+          class="play-audio hgi hgi-stroke hgi-play-circle size-16 flex items-center justify-center text-green text-5xl font-light"></span>
         <div class="w-full flex-col items-start justify-start gap-1.5">
           <h4 class="text-base text-green font-bold leading-tight line-clamp-2">${audio.darsu}</h4>
           <p class="text-xs text-shade/55 font-medium">${audio.name}</p>
