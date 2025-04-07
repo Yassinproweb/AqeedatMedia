@@ -59,7 +59,7 @@ async function fetchAudio() {
       <div role="button"
         class="w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
         <span
-          class="play-audio hgi hgi-stroke hgi-play-circle size-16 flex items-center justify-center text-green text-5xl font-light"></span>
+          class="play-audio hgi hgi-stroke hgi-play-circle w-16 flex items-center justify-center text-green text-5xl font-light"></span>
         <div class="w-full flex-col items-start justify-start gap-1.5">
           <h4 class="text-base text-green font-bold leading-tight line-clamp-2">${audio.darsu}</h4>
           <p class="text-xs text-shade/55 font-medium">${audio.name}</p>
@@ -72,3 +72,37 @@ async function fetchAudio() {
 };
 
 fetchAudio();
+
+// audios’ div
+const topic = document.getElementById("series");
+
+// fetching audios from series.json file
+async function fetchSeries() {
+  const res = await fetch("./series.json");
+  const series = await res.json();
+
+  series.forEach(serie => {
+    const div = document.createElement("div")
+
+    div.innerHTML = `
+      <div role="button"
+        class="w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
+        <div class="w-fit items-center justify-start gap-0.5">
+          <h4 class="text-6xl font-bold">${serie.audios}</h4>
+          <span class="w-fit flex flex-col items-center justify-center gap-0 text-shade font-bold">
+            <i class="hgi hgi-stroke hgi-folder-audio text-3xl"></i>
+            <span class="text-xs">Audios</span>
+          </span>
+        </div>
+        <div class="w-full flex-col items-start justify-start gap-1.5">
+          <h4 class="text-base text-green font-bold leading-tight line-clamp-2">${serie.title}</h4>
+          <p class="text-xs text-shade/55 font-medium">${serie.sheikh}</p>
+        </div>
+      </div>
+    `;
+
+    series.appendChild(div);
+  });
+};
+
+fetchSeries();
