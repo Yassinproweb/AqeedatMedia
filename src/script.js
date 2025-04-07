@@ -87,16 +87,16 @@ async function fetchSeries() {
     div.innerHTML = `
       <div role="button"
         class="w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
-        <div class="w-fit flex-shrink-0 items-center justify-start gap-0.5">
-          <h4 class="text-6xl font-bold text-shade">${serie.audios}</h4>
-          <span class="w-fit flex flex-col items-center justify-center gap-0 text-shade font-bold">
-            <i class="hgi hgi-stroke hgi-folder-audio text-3xl"></i>
-            <span class="text-xs">Audios</span>
-          </span>
-        </div>
         <div class="w-full flex-col items-start justify-start gap-1.5">
           <h4 class="text-base text-green font-bold leading-tight line-clamp-2">${serie.title}</h4>
           <p class="text-xs text-shade/55 font-medium">${serie.sheikh}</p>
+        </div>
+        <div class="w-fit flex-shrink-0 items-center justify-start gap-0.5">
+          <h4 class="text-6xl font-bold text-green">${serie.audios}</h4>
+          <span class="w-fit flex flex-col items-center justify-center gap-0 text-green font-bold">
+            <i class="hgi hgi-stroke hgi-folder-audio text-3xl"></i>
+            <span class="text-xs">Audios</span>
+          </span>
         </div>
       </div>
     `;
