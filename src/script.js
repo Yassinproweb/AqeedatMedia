@@ -107,3 +107,12 @@ async function fetchSeries() {
 
 fetchSeries();
 
+// change footer year every min
+function updateYear() {
+  const now = new Date();
+  const year = now.getFullYear();
+  document.getElementById("date").textContent = year;
+}
+
+updateYear();
+setInterval(updateYear, 60000);
