@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="/imgs/Aqeedah.png">
 
   <!-- link to css file -->
-  <link rel="stylesheet" href="src/main.css">
+  <link rel="stylesheet" href="./src/main.css">
 
   <!-- hugeicons -->
   <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
@@ -69,7 +69,12 @@
     </section>
   </main>
 
-  <main id="playing" class="hid den w-full min-h-svh flex-col items-center justify-start gap-7 pt-7 paused">
+  <div id="float-play"
+    class="fixed bottom-9 right-9 size-24 items-center justify-center rounded-full shadow-lg shadow-green/10 z-[100] bg-transparent">
+    <div class="w-full h-full relative items-center justify-center animate-spin gradient z-[110]"></div>
+  </div>
+
+  <main id="playing" class="hid den w-full min-h-svh flex-col items-center justify-start gap-11 pt-7 paused">
     <div class="w-full items-center justify-between gap-3">
       <button id="arrow-back"
         class="size-14 hgi hgi-stroke hgi-arrow-down-01 text-3xl text-white bg-red rounded-xl flex-shrink-0"></button>
