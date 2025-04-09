@@ -13,17 +13,12 @@
   <!-- link to css file -->
   <link rel="stylesheet" href="src/main.css">
 
-  <!-- phosphor icons -->
-  <link rel="stylesheet" href="/src/bold.css">
-  <link rel="stylesheet" href="/src/fill.css">
-  <link rel="stylesheet" href="/src/regular.css">
-
   <!-- hugeicons -->
   <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
 </head>
 
 <body>
-  <header class="items-center justify-between">
+  <header class="hidden items-center justify-between">
     <img src="/imgs/Aqeedah.png" alt="Aqeedat Media logo" class="w-16">
 
     <div class="w-fit items-center justify-end text-4xl text-green">
@@ -40,7 +35,7 @@
     </nav>
   </header>
 
-  <main id="home" class="flex-col items-start justify-start gap-7">
+  <main id="home" class="hidden flex-col items-start justify-start gap-7">
     <section class="w-full flex-col items-start justify-start gap-1.5 bg-green px-pw py-11">
       <h1 class="text-4xl text-white text-start font-bold capitalize">listen learn & enjoy!</h1>
       <p class="text-white/75">Listen and Learn Islamic Religion in Luganda taught to you by our Ugandan Sheikhs.</p>
@@ -73,6 +68,69 @@
       </div>
     </section>
   </main>
+
+  <main id="playing" class="hid den w-full min-h-svh flex-col items-center justify-start gap-7 pt-7">
+    <div class="w-full items-center justify-between gap-3">
+      <button id="arrow-back"
+        class="size-14 hgi hgi-stroke hgi-arrow-down-01 text-3xl text-white bg-red rounded-xl flex-shrink-0"></button>
+      <div class="w-full flex-col items-center justify-center gap-1.5">
+        <h3 class="text-base text-center text-green font-bold line-clamp-1 w-full capitalize">now playing</h3>
+        <p class="text-xs text-black/45 text-center capitalize">Aqeedah Awwalan</p>
+      </div>
+      <button id="playlist"
+        class="size-14 hgi hgi-stroke hgi-playlist-03 text-3xl text-white bg-green rounded-xl flex-shrink-0"></button>
+    </div>
+    <div class="w-full flex-col items-start justify-center gap-5">
+      <div class="relative w-full flex-col items-center justify-center px-3 gap-7">
+        <img src="/imgs/thumb.jpg" alt="" id="audio-thumb"
+          class="w-full aspect-[4/2.75] object-cover object-center rounded-xl shadow-lg shadow-green/15">
+      </div>
+    </div>
+    <div class="w-full flex-col items-center justify-center gap-5">
+      <div class="w-full flex-col items-center justify-center">
+        <h5 id="audio-title" class="text-lg text-green text-center font-bold capitalize">Ebituufu ku kiro kya Laylat
+          Al-Qadr</h5>
+        <p id="audio-sheikh" class="text-black/55">Shk. Hamzah Muwonge</p>
+      </div>
+      <div class="w-full flex-col items-center justify-center gap-1.5">
+        <div id="progress-bar" class="relative w-full h-1.5 rounded bg-green/25 overflow-hidden">
+          <div id="progress-details"
+            class="absolute top-0 left-0 w-[45%] h-full bg-gradient-to-r from-green via-green/65 to-red">
+          </div>
+        </div>
+        <div id="play-time" class="w-full items-center justify-between px-1">
+          <p class="text-sm text-red font-medium">27:11</p>
+          <p class="text-sm text-green font-medium">1:00:00</p>
+        </div>
+        <div class="w-full items-center justify-between gap-2">
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center repeat">
+            <i class="hgi hgi-stroke hgi-share-01"></i>
+          </button>
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i class="hgi hgi-stroke hgi-previous"></i>
+          </button>
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i id="backward-15" class="hgi hgi-stroke hgi-go-backward-15-sec"></i>
+          </button>
+          <button class="text-white text-2xl flex items-center play-btn justify-center size-16 rounded-full bg-red">
+            <i id="play-pause" class="hgi hgi-stroke hgi-pause"></i>
+          </button>
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i id="forward-15" class="hgi hgi-stroke hgi-go-forward-15-sec"></i>
+          </button>
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i class="hgi hgi-stroke hgi-next"></i>
+          </button>
+          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center shuffle">
+            <i id="repeat" class="hgi hgi-stroke hgi-repeat"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <audio src="/darsu.aac" id="now-playing"></audio>
+  </main>
+
 
   <footer class="w-full flex-col items-start justify-start gap-7 bg-shade">
     <div class="w-full flex-col items-start justify-start gap-7">
