@@ -134,7 +134,7 @@ const content = document.getElementById("playing"),
 
 let duruus = [
   {
-    title: "Abaffe! Sitaane erina obuyinza ku muntu?",
+    title: "Abaffe! Shayātwīn zirina obuyinza ku muntu?",
     sheikh: "Shk. Muhammad Quraysh Mazinga",
     img: "/imgs/thumb8.jpg",
     dars: "/audio/sitaane.m4a"
@@ -152,14 +152,14 @@ let duruus = [
     dars: "/audio/darsu.aac"
   },
   {
-    title: "Tafsīr Sūratul Kahf",
+    title: "Tafsīr Sūratul Kahf - Part 60",
     sheikh: "Shk. Abdu-Rrahmaan Mukisa",
     img: "/imgs/thumb3.jpg",
     dars: "/audio/tafsir.mp3"
   }
 ]
 
-let index;
+let index = 0;
 
 window.addEventListener("load", () => {
   loadData(index);
@@ -196,17 +196,15 @@ function pauseDarsu() {
 
 nextBtn.addEventListener("click", () => {
   nextDarsu();
-  alert("played")
 });
 
 prevBtn.addEventListener("click", () => {
   prevDarsu();
-  alert("playedb")
 });
 
 function nextDarsu() {
   index++;
-  if (index > duruus.length) {
+  if (index >= duruus.length) {
     index = 0;
   }
   else {
@@ -218,8 +216,8 @@ function nextDarsu() {
 
 function prevDarsu() {
   index--;
-  if (index <= 0) {
-    index = duruus.length;
+  if (index < 0) {
+    index = duruus.length - 1;
   }
   else {
     index = index;
