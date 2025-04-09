@@ -16,5 +16,11 @@ let duruus = [
     sheikh: "Shk. Hamzah Muwonge",
     img: "/imgs/thumb9.jpg",
     dars: "/audio/darsu.aac"
+  },
+  {
+    title: "Tafsīr Sūratul Kahf",
+    sheikh: "Shk. Abdu-Rrahmaan Mukisa",
+    img: "/imgs/thumb3.jpg",
+    dars: "/audio/tafsir.mp3"
   }
 ]

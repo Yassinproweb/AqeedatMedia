@@ -1,5 +1,3 @@
-import 'duruus.js';
-
 // Sheikhs’ div
 const sheikhs = document.getElementById("sheikhs");
 
@@ -126,15 +124,40 @@ const content = document.getElementById("playing"),
   playPause = document.getElementById("play-pause"),
   playPauseBtn = document.getElementById("play-pause-btn"),
   Audio = document.getElementById("now-playing"),
-  backward15 = document.getElementById("backward-15"),
-  forward15 = document.getElementById("forward-15"),
-  prevBtn = document.querySelector(".hgi-previous"),
-  nextBtn = document.querySelector(".hgi-next"),
+  prevBtn = document.getElementById("hgi-previous"),
+  nextBtn = document.getElementById("hgi-next"),
   progressBar = document.getElementById("progress-bar"),
   progressDetails = document.getElementById("progress-details"),
   repeatBtn = document.getElementById("repeat"),
   Playimage = document.getElementById("audio-thumb"),
-  Playlist = document.getElementById("playlist");
+  shuffle = document.getElementById("shuffle");
+
+let duruus = [
+  {
+    title: "Abaffe! Sitaane erina obuyinza ku muntu?",
+    sheikh: "Shk. Muhammad Quraysh Mazinga",
+    img: "/imgs/thumb8.jpg",
+    dars: "/audio/sitaane.m4a"
+  },
+  {
+    title: "Omuntu agezeseddwa n'eddogo akola atya?",
+    sheikh: "Shk. Hamzah Kayiira",
+    img: "/imgs/thumb6.jpg",
+    dars: "/audio/eddogo.mp3"
+  },
+  {
+    title: "Ebituufu ku kiro kya Laylat Al-Qadr",
+    sheikh: "Shk. Hamzah Muwonge",
+    img: "/imgs/thumb9.jpg",
+    dars: "/audio/darsu.aac"
+  },
+  {
+    title: "Tafsīr Sūratul Kahf",
+    sheikh: "Shk. Abdu-Rrahmaan Mukisa",
+    img: "/imgs/thumb3.jpg",
+    dars: "/audio/tafsir.mp3"
+  }
+]
 
 let index;
 
@@ -151,35 +174,37 @@ function loadData(indexValue) {
 
 playPause.addEventListener("click", () => {
   const isMusicPaused = content.classList.contains("paused");
-  if (isMusicPaused) {
-    pauseSong();
+  if (!isMusicPaused) {
+    pauseDarsu();
   }
   else {
-    playSong();
+    playDarsu();
   }
 });
 
-function playSong() {
-  content.classList.add("paused");
+function playDarsu() {
+  content.classList.remove("paused");
   playPauseBtn.classList.replace("hgi-play", "hgi-pause");
   Audio.play();
 }
 
-function pauseSong() {
-  content.classList.remove("paused");
+function pauseDarsu() {
+  content.classList.add("paused");
   playPauseBtn.classList.replace("hgi-pause", "hgi-play");
   Audio.pause();
 }
 
 nextBtn.addEventListener("click", () => {
-  nextSong();
+  nextDarsu();
+  alert("played")
 });
 
 prevBtn.addEventListener("click", () => {
-  prevSong();
+  prevDarsu();
+  alert("playedb")
 });
 
-function nextSong() {
+function nextDarsu() {
   index++;
   if (index > duruus.length) {
     index = 0;
@@ -188,10 +213,10 @@ function nextSong() {
     index = index;
   }
   loadData(index);
-  playSong();
+  playDarsu();
 }
 
-function prevSong() {
+function prevDarsu() {
   index--;
   if (index <= 0) {
     index = duruus.length;
@@ -200,7 +225,7 @@ function prevSong() {
     index = index;
   }
   loadData(index);
-  playSong();
+  playDarsu();
 }
 
 function formatTime(seconds) {
@@ -230,10 +255,10 @@ Audio.addEventListener("timeupdate", (e) => {
   });
 
   //Timer Logic
-  Audio.addEventListener("loadeddata", () => {
-    let finalTimeData = document.getElementById("play-final");
-    finalTimeData.innerText = formatTime(finalTime);
-  });
+  // Audio.addEventListener("loadeddata", () => {
+  let finalTimeData = document.getElementById("play-final");
+  finalTimeData.innerText = formatTime(finalTime);
+  // });
 
   //Update Current Duration
   let currentTimeData = document.getElementById("play-start");
@@ -245,11 +270,11 @@ Audio.addEventListener("timeupdate", (e) => {
   });
 });
 
-//Playlist Logic
-Playlist.addEventListener("click", () => {
-  var randIndex = Math.floor(Math.random() * duruus.length) + 1; // Select random betwn 1 and song array length
+//shuffle Logic
+shuffle.addEventListener("click", () => {
+  var randIndex = Math.floor(Math.random() * duruus.length) + 1; // Select random between 1 and song array length
   loadData(randIndex);
-  playSong();
+  playDarsu();
 });
 
 Audio.addEventListener("ended", () => {
@@ -258,6 +283,6 @@ Audio.addEventListener("ended", () => {
     index = 0;
   }
   loadData(index);
-  playSong();
+  playDarsu();
 });
 

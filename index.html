@@ -88,7 +88,8 @@
     </div>
     <div class="w-full flex-col items-center justify-center gap-5">
       <div class="w-full flex-col items-center justify-center">
-        <h5 id="audio-title" class="text-lg text-green text-center font-bold capitalize">Ebituufu ku kiro kya Laylat
+        <h5 id="audio-title" class="text-lg text-green text-center font-bold line-clamp-1 capitalize">Ebituufu ku kiro
+          kya Laylat
           Al-Qadr</h5>
         <p id="audio-sheikh" class="text-black/55">Shk. Hamzah Muwonge</p>
       </div>
@@ -100,13 +101,15 @@
         </div>
         <div class="w-full items-center justify-between px-1">
           <p id="play-start" class="text-sm text-red font-medium">00:00</p>
-          <p id="play-final" class="text-sm text-green font-medium">1:00:00</p>
+          <p id="play-final" class="text-sm text-green font-medium">-:--:--</p>
         </div>
         <div class="w-full items-center justify-between gap-2">
-          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center repeat">
-            <i class="hgi hgi-stroke hgi-share-01"></i>
+          <button id="shuffle"
+            class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i class="hgi hgi-stroke hgi-shuffle"></i>
           </button>
-          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+          <button id="hgi-previous"
+            class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
             <i class="hgi hgi-stroke hgi-previous"></i>
           </button>
           <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
@@ -118,7 +121,8 @@
           <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
             <i id="forward-15" class="hgi hgi-stroke hgi-go-forward-15-sec"></i>
           </button>
-          <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+          <button id="hgi-next"
+            class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
             <i class="hgi hgi-stroke hgi-next"></i>
           </button>
           <button class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center shuffle">
@@ -191,7 +195,6 @@
     </div>
   </footer>
 
-  <script type="module" src="./src/duruus.js"></script>
   <script type="module" src="./src/script.js"></script>
 </body>
 
