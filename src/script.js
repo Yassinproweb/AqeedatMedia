@@ -124,6 +124,8 @@ const content = document.getElementById("playing"),
   playPause = document.getElementById("play-pause"),
   playPauseBtn = document.getElementById("play-pause-btn"),
   Audio = document.getElementById("now-playing"),
+  forwards15 = document.getElementById("forwards"),
+  backwards15 = document.getElementById("backwards"),
   prevBtn = document.getElementById("hgi-previous"),
   nextBtn = document.getElementById("hgi-next"),
   progressBar = document.getElementById("progress-bar"),
@@ -134,27 +136,27 @@ const content = document.getElementById("playing"),
 
 let duruus = [
   {
-    title: "Abaffe! Shayātwīn zirina obuyinza ku muntu?",
+    title: "Abaffe! Sitaane erina obuyinza ku muntu?",
     sheikh: "Shk. Muhammad Quraysh Mazinga",
-    img: "/imgs/thumb8.jpg",
+    img: "/imgs/thumb1.jpg",
     dars: "/audio/sitaane.m4a"
   },
   {
     title: "Omuntu agezeseddwa n'eddogo akola atya?",
     sheikh: "Shk. Hamzah Kayiira",
-    img: "/imgs/thumb6.jpg",
+    img: "/imgs/thumb2.jpg",
     dars: "/audio/eddogo.mp3"
   },
   {
     title: "Ebituufu ku kiro kya Laylat Al-Qadr",
     sheikh: "Shk. Hamzah Muwonge",
-    img: "/imgs/thumb9.jpg",
+    img: "/imgs/thumb3.jpg",
     dars: "/audio/darsu.aac"
   },
   {
     title: "Tafsīr Sūratul Kahf - Part 60",
     sheikh: "Shk. Abdu-Rrahmaan Mukisa",
-    img: "/imgs/thumb3.jpg",
+    img: "/imgs/thumb4.jpg",
     dars: "/audio/tafsir.mp3"
   }
 ]
@@ -193,6 +195,16 @@ function pauseDarsu() {
   playPauseBtn.classList.replace("hgi-pause", "hgi-play");
   Audio.pause();
 }
+
+
+forwards15.addEventListener("click", () => {
+  Audio.currentTime += 15;
+});
+
+backwards15.addEventListener("click", () => {
+  Audio.currentTime -= 15;
+  if (Audio.currentTime < 0) Audio.currentTime = 0; // prevent negative time
+});
 
 nextBtn.addEventListener("click", () => {
   nextDarsu();

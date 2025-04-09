@@ -82,15 +82,14 @@
     </div>
     <div class="w-full flex-col items-start justify-center gap-5">
       <div class="relative w-full flex-col items-center justify-center px-3 gap-7">
-        <img src="/imgs/thumb.jpg" alt="" id="audio-thumb"
+        <img src="" alt="audio thumbnail" id="audio-thumb"
           class="w-full aspect-[4/2.75] object-cover object-center rounded-xl shadow-lg shadow-green/15">
       </div>
     </div>
     <div class="w-full flex-col items-center justify-center gap-5">
       <div class="w-full flex-col items-center justify-center">
-        <h5 id="audio-title" class="text-lg text-green text-center font-bold line-clamp-1 capitalize">Abaffe! Shayātwīn
-          zirina obuyinza ku muntu?</h5>
-        <p id="audio-sheikh" class="text-black/55">Shk. Muhammad Quraysh Mazinga</p>
+        <h5 id="audio-title" class="text-lg text-green text-center font-bold line-clamp-1 capitalize"></h5>
+        <p id="audio-sheikh" class="text-black/55"></p>
       </div>
       <div class="w-full flex-col items-center justify-center gap-1.5">
         <div id="progress-bar" class="relative w-full h-1.5 rounded bg-shade/35 overflow-hidden">
@@ -99,10 +98,10 @@
           </div>
         </div>
         <div class="w-full items-center justify-between px-1">
-          <p id="play-start" class="text-sm text-red font-medium">00:00</p>
+          <p id="play-start" class="text-sm text-red font-medium">--:--</p>
           <p id="play-final" class="text-sm text-green font-medium">-:--:--</p>
         </div>
-        <div class="w-full items-center justify-center gap-5">
+        <div class="w-full items-center justify-between gap-2">
           <button id="shuffle"
             class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
             <i class="hgi hgi-stroke hgi-shuffle"></i>
@@ -111,8 +110,16 @@
             class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
             <i class="hgi hgi-stroke hgi-previous"></i>
           </button>
+          <button id="backwards"
+            class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i class="hgi hgi-stroke hgi-go-backward-15-sec"></i>
+          </button>
           <button id="play-pause" class="text-2xl flex items-center justify-center size-16 rounded-full bg-red">
             <i id="play-pause-btn" class="hgi hgi-stroke hgi-play text-white"></i>
+          </button>
+          <button id="forwards"
+            class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
+            <i class="hgi hgi-stroke hgi-go-forward-15-sec"></i>
           </button>
           <button id="hgi-next"
             class="size-10 text-red text-2xl rounded-full bg-red/15 flex items-center justify-center">
