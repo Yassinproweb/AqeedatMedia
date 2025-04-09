@@ -1,3 +1,5 @@
+import 'duruus.js';
+
 // Sheikhs’ div
 const sheikhs = document.getElementById("sheikhs");
 
@@ -118,7 +120,7 @@ updateYear();
 setInterval(updateYear, 60000);
 
 // audio player
-const content = document.querySelector(".content"),
+const content = document.getElementById("playing"),
   audioTitle = document.getElementById("audio-title"),
   audioSheikh = document.getElementById("audio-sheikh"),
   playPause = document.getElementById("play-pause"),
@@ -131,19 +133,20 @@ const content = document.querySelector(".content"),
   progressBar = document.getElementById("progress-bar"),
   progressDetails = document.getElementById("progress-details"),
   repeatBtn = document.getElementById("repeat"),
-  Playimage = document.getElementById("audio-thumb");
+  Playimage = document.getElementById("audio-thumb"),
+  Playlist = document.getElementById("playlist");
 
-let index = 1;
+let index;
 
 window.addEventListener("load", () => {
   loadData(index);
 });
 
 function loadData(indexValue) {
-  audioTitle.innerHTML = duruus[indexValue - 1].title;
-  audioSheikh.innerHTML = duruus[indexValue - 1].sheikh;
-  Playimage.src = duruus[indexValue - 1].img;
-  Audio.src = duruus[indexValue - 1].dars;
+  audioTitle.innerHTML = duruus[indexValue].title;
+  audioSheikh.innerHTML = duruus[indexValue].sheikh;
+  Playimage.src = duruus[indexValue].img;
+  Audio.src = duruus[indexValue].dars;
 }
 
 playPause.addEventListener("click", () => {
@@ -158,13 +161,13 @@ playPause.addEventListener("click", () => {
 
 function playSong() {
   content.classList.add("paused");
-  playPauseBtn.classList.replace("hgi-play-button", "hgi-pause");
+  playPauseBtn.classList.replace("hgi-play", "hgi-pause");
   Audio.play();
 }
 
 function pauseSong() {
   content.classList.remove("paused");
-  playPauseBtn.classList.replace("hgi-pause", "hgi-play-button");
+  playPauseBtn.classList.replace("hgi-pause", "hgi-play");
   Audio.pause();
 }
 
@@ -179,7 +182,7 @@ prevBtn.addEventListener("click", () => {
 function nextSong() {
   index++;
   if (index > duruus.length) {
-    index = 1;
+    index = 0;
   }
   else {
     index = index;
@@ -200,45 +203,41 @@ function prevSong() {
   playSong();
 }
 
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  const formattedHrs = hrs > 0 ? hrs + ":" : "";
+  const formattedMins = hrs > 0 ? String(mins).padStart(2, "0") : mins;
+  const formattedSecs = String(secs).padStart(2, "0");
+
+  return formattedHrs + formattedMins + ":" + formattedSecs;
+}
+
 Audio.addEventListener("timeupdate", (e) => {
   const initialTime = e.target.currentTime; // Get current music time
   const finalTime = e.target.duration; // Get music duration
   let BarWidth = (initialTime / finalTime) * 100;
-  progressBar.style.width = BarWidth + "%";
+  progressDetails.style.width = BarWidth + "%";
 
-  progressDetails.addEventListener("click", (e) => {
-    let progressValue = progressDetails.clientWidth; // Get width of Progress Bar
+  progressBar.addEventListener("click", (e) => {
+    let progressValue = progressBar.clientWidth; // Get width of Progress Bar
     let clickedOffsetX = e.offsetX; // get offset x value
     let MusicDuration = Audio.duration; // get total music duration
 
     Audio.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
-
   });
 
   //Timer Logic
   Audio.addEventListener("loadeddata", () => {
-    let finalTimeData = content.querySelector(".final");
-
-    //Update finalDuration  
-    let AudioDuration = Audio.duration;
-    let finalMinutes = Math.floor(AudioDuration / 60);
-    let finalSeconds = Math.floor(AudioDuration % 60);
-    if (finalSeconds < 10) {
-      finalSeconds = "0" + finalSeconds;
-    }
-    finalTimeData.innerText = finalMinutes + ":" + finalSeconds;
-
+    let finalTimeData = document.getElementById("play-final");
+    finalTimeData.innerText = formatTime(finalTime);
   });
 
   //Update Current Duration
-  let currentTimeData = content.querySelector(".current");
-  let CurrentTime = Audio.currentTime;
-  let currentMinutes = Math.floor(CurrentTime / 60);
-  let currentSeconds = Math.floor(CurrentTime % 60);
-  if (currentSeconds < 10) {
-    currentSeconds = "0" + currentSeconds;
-  }
-  currentTimeData.innerText = currentMinutes + ":" + currentSeconds;
+  let currentTimeData = document.getElementById("play-start");
+  currentTimeData.innerText = formatTime(initialTime);
 
   //repeat button logic
   repeatBtn.addEventListener("click", () => {
@@ -256,7 +255,7 @@ Playlist.addEventListener("click", () => {
 Audio.addEventListener("ended", () => {
   index++;
   if (index > duruus.length) {
-    index = 1;
+    index = 0;
   }
   loadData(index);
   playSong();
