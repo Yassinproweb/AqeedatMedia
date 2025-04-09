@@ -122,6 +122,7 @@ const content = document.querySelector(".content"),
   audioTitle = document.getElementById("audio-title"),
   audioSheikh = document.getElementById("audio-sheikh"),
   playPause = document.getElementById("play-pause"),
+  playPauseBtn = document.getElementById("play-pause-btn"),
   Audio = document.getElementById("now-playing"),
   backward15 = document.getElementById("backward-15"),
   forward15 = document.getElementById("forward-15"),
@@ -145,7 +146,7 @@ function loadData(indexValue) {
   Audio.src = duruus[indexValue - 1].dars;
 }
 
-playplayPauseaddEventListener("click", () => {
+playPause.addEventListener("click", () => {
   const isMusicPaused = content.classList.contains("paused");
   if (isMusicPaused) {
     pauseSong();
@@ -157,13 +158,13 @@ playplayPauseaddEventListener("click", () => {
 
 function playSong() {
   content.classList.add("paused");
-  playBtnIcon.classList.replace("hgi-play-button", "hgi-pause");
+  playPauseBtn.classList.replace("hgi-play-button", "hgi-pause");
   Audio.play();
 }
 
 function pauseSong() {
   content.classList.remove("paused");
-  playBtnIcon.classList.replace("hgi-pause", "hgi-play-button");
+  playPauseBtn.classList.replace("hgi-pause", "hgi-play-button");
   Audio.pause();
 }
 
@@ -177,7 +178,7 @@ prevBtn.addEventListener("click", () => {
 
 function nextSong() {
   index++;
-  if (index > songs.length) {
+  if (index > duruus.length) {
     index = 1;
   }
   else {
@@ -190,7 +191,7 @@ function nextSong() {
 function prevSong() {
   index--;
   if (index <= 0) {
-    index = songs.length;
+    index = duruus.length;
   }
   else {
     index = index;
@@ -247,14 +248,14 @@ Audio.addEventListener("timeupdate", (e) => {
 
 //Playlist Logic
 Playlist.addEventListener("click", () => {
-  var randIndex = Math.floor(Math.random() * songs.length) + 1; // Select random betwn 1 and song array length
+  var randIndex = Math.floor(Math.random() * duruus.length) + 1; // Select random betwn 1 and song array length
   loadData(randIndex);
   playSong();
 });
 
 Audio.addEventListener("ended", () => {
   index++;
-  if (index > songs.length) {
+  if (index > duruus.length) {
     index = 1;
   }
   loadData(index);
