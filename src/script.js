@@ -130,7 +130,7 @@ const content = document.querySelector(".content"),
   progressBar = document.getElementById("progress-bar"),
   progressDetails = document.getElementById("progress-details"),
   repeatBtn = document.getElementById("repeat"),
-  Playlist = document.getElementById("playlist");
+  Playimage = document.getElementById("audio-thumb");
 
 let index = 1;
 
@@ -139,13 +139,13 @@ window.addEventListener("load", () => {
 });
 
 function loadData(indexValue) {
-  audioTitle.innerHTML = songs[indexValue - 1].name;
-  audioSheikh.innerHTML = songs[indexValue - 1].artist;
-  Playimage.src = "images/" + songs[indexValue - 1].img + ".jpg";
-  Audio.src = "music/" + songs[indexValue - 1].audio + ".mp3";
+  audioTitle.innerHTML = duruus[indexValue - 1].title;
+  audioSheikh.innerHTML = duruus[indexValue - 1].sheikh;
+  Playimage.src = duruus[indexValue - 1].img;
+  Audio.src = duruus[indexValue - 1].dars;
 }
 
-playBtn.addEventListener("click", () => {
+playplayPauseaddEventListener("click", () => {
   const isMusicPaused = content.classList.contains("paused");
   if (isMusicPaused) {
     pauseSong();
