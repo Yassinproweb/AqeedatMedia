@@ -20,6 +20,17 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.anim-paused': {
+          'animation-play-state': 'paused',
+        },
+        '.anim-running': {
+          'animation-play-state': 'running',
+        },
+      })
+    }
+  ],
 }
 

@@ -119,6 +119,9 @@ setInterval(updateYear, 60000);
 
 // audio player
 const content = document.getElementById("playing"),
+  floatPlay = document.getElementById("float-play"),
+  spinner = document.getElementById("spinner"),
+  floatPlayBtn = document.getElementById("hgi-play"),
   audioTitle = document.getElementById("audio-title"),
   audioSheikh = document.getElementById("audio-sheikh"),
   playPause = document.getElementById("play-pause"),
@@ -132,7 +135,7 @@ const content = document.getElementById("playing"),
   progressDetails = document.getElementById("progress-details"),
   repeatBtn = document.getElementById("repeat"),
   Playimage = document.getElementById("audio-thumb"),
-  shuffle = document.getElementById("shuffle");
+  timer = document.getElementById("timer");
 
 let duruus = [
   {
@@ -174,13 +177,31 @@ function loadData(indexValue) {
   Audio.src = duruus[indexValue].dars;
 }
 
+floatPlay.addEventListener("click", () => {
+  const isMusicPaused = content.classList.contains("paused");
+  if (!isMusicPaused) {
+    pauseDarsu();
+    spinner.classList.replace("anim-running", "anim-paused")
+    floatPlayBtn.classList.replace("hgi-pause", "hgi-play")
+  }
+  else {
+    playDarsu();
+    spinner.classList.replace("anim-paused", "anim-running")
+    floatPlayBtn.classList.replace("hgi-play", "hgi-pause")
+  }
+});
+
 playPause.addEventListener("click", () => {
   const isMusicPaused = content.classList.contains("paused");
   if (!isMusicPaused) {
     pauseDarsu();
+    spinner.classList.replace("anim-running", "anim-paused")
+    floatPlayBtn.classList.replace("hgi-pause", "hgi-play")
   }
   else {
     playDarsu();
+    spinner.classList.replace("anim-paused", "anim-running")
+    floatPlayBtn.classList.replace("hgi-play", "hgi-pause")
   }
 });
 
@@ -265,10 +286,18 @@ Audio.addEventListener("timeupdate", (e) => {
   });
 
   //Timer Logic
-  // Audio.addEventListener("loadeddata", () => {
   let finalTimeData = document.getElementById("play-final");
-  finalTimeData.innerText = formatTime(finalTime);
-  // });
+  let remainingTime = parseInt(e.target.duration, 10) - parseInt(e.target.currentTime, 10);
+
+  timer.addEventListener("click", () => {
+    finalTimeData.classList.toggle("display")
+  })
+
+  if (!finalTimeData.classList.contains("display")) {
+    finalTimeData.innerText = formatTime(finalTime);
+  } else {
+    finalTimeData.innerText = "-" + formatTime(remainingTime);
+  }
 
   //Update Current Duration
   let currentTimeData = document.getElementById("play-start");
@@ -278,13 +307,6 @@ Audio.addEventListener("timeupdate", (e) => {
   repeatBtn.addEventListener("click", () => {
     Audio.currentTime = 0;
   });
-});
-
-//shuffle Logic
-shuffle.addEventListener("click", () => {
-  var randIndex = Math.floor(Math.random() * duruus.length) + 1; // Select random between 1 and song array length
-  loadData(randIndex);
-  playDarsu();
 });
 
 Audio.addEventListener("ended", () => {
