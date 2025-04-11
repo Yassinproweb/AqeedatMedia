@@ -192,10 +192,6 @@ window.addEventListener("DOMContentLoaded", () => {
   playPause.addEventListener("click", () => {
     clicks++;
   });
-
-  if (clicks > 0 && content.classList.contains("hidden")) {
-    floatPlay.classList.remove("hidden");
-  };
 });
 
 // leaving the player screen
@@ -205,9 +201,15 @@ document.getElementById("arrow-back").addEventListener("click", () => {
   document.querySelector("main").classList.remove("hidden");
   document.querySelector("footer").classList.remove("hidden");
 
-  if (clicks > 0 && content.classList.contains("hidden")) {
+  if (content.classList.contains("hidden")) {
     floatPlay.classList.remove("hidden");
   };
+});
+
+floatPlay.addEventListener("dblclick", () => {
+  floatPlay.classList.add("hidden");
+  pauseDarsu();
+  Audio.currentTime = 0;
 });
 
 let duruus = [
