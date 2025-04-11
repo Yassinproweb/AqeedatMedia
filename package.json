@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run dev:css && vite",
-    "dev:css": "tailwindcss -i ./src/main.css -o ./public/main.css --watch",
-    "build": "pnpm run build:css",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "build:css": "tailwindcss -i ./src/main.css -o ./public/main.css --minify"
   },
   "devDependencies": {
