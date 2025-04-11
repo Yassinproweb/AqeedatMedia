@@ -38,6 +38,7 @@ footer {
 }
 
 header,
+.main,
 main,
 footer {
   padding-inline: 5vw;
@@ -49,6 +50,7 @@ nav {
 }
 
 main,
+.main,
 footer {
   padding-block: 3.5rem;
 }
@@ -63,8 +65,9 @@ h6 {
   pointer-events: none;
 }
 
-h4 {
-  text-shadow: 0px 0px 0px hsl(139, 49%, 35%, 0.5);
+header.show {
+  background: white;
+  box-shadow: 0 3px 11px -3px hsl(137, 69%, 27%, 0.175);
 }
 
 

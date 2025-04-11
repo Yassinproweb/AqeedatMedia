@@ -1,3 +1,29 @@
+// navbar config
+let menuO = document.getElementById("menu-o"),
+  menuC = document.getElementById("menu-c"),
+  navMenu = document.querySelector("nav"),
+  header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY >= 35) {
+    header.classList.add("show")
+  } else {
+    header.classList.remove("show")
+  }
+});
+
+menuO.addEventListener("click", () => {
+  menuO.classList.add("hidden");
+  menuC.classList.remove("hidden");
+  navMenu.classList.remove("hidden");
+});
+
+menuC.addEventListener("click", () => {
+  menuC.classList.add("hidden");
+  menuO.classList.remove("hidden");
+  navMenu.classList.add("hidden");
+});
+
 // Sheikhs’ div
 const sheikhs = document.getElementById("sheikhs");
 
@@ -10,7 +36,7 @@ async function fetchData() {
     const div = document.createElement("div")
 
     div.innerHTML = `
-      <div class="relative w-full aspect-[4/2.85] flex-col items-center justify-start gap-5 px-7 pt-[19%] rounded-2xl shadow-md shadow-green/5 0 overflow-hidden border border-green/15 bg-white">
+      <div role="link" class="relative w-full aspect-[4/2.85] flex-col items-center justify-start gap-5 px-7 pt-[19%] rounded-2xl shadow-md shadow-green/5 0 overflow-hidden border border-green/15 bg-white">
         <h3 class="text-2xl text-shade text-center font-bold">${dta.name}</h3>
         <div class="div-banner absolute bottom-0 left-0 w-full flex items-center justify-between px-3.5 py-3 bg-white text-shade">
           <div class="w-fit items-center justify-start gap-0.5">
@@ -57,7 +83,7 @@ async function fetchAudio() {
 
     div.innerHTML = `
       <div role="button"
-        class="w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
+        class="goto-dars w-full items-center justify-between gap-7 px-5 py-3.5 rounded-xl shadow-md shadow-shade/5 bg-shade/5">
         <span
           class="play-audio hgi hgi-stroke hgi-play-circle w-16 flex items-center justify-center text-green text-5xl font-light"></span>
         <div class="w-full flex-col items-start justify-start gap-1.5">
@@ -66,6 +92,29 @@ async function fetchAudio() {
         </div>
       </div>
     `;
+
+    function showSection() {
+      const activeSection = document.querySelector("#playing");
+
+      activeSection.classList.remove("hidden");
+
+      setTimeout(() => {
+        activeSection.classList.remove("invisible");
+      }, 500);
+
+      // Scroll to the top of the new section
+      activeSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    let gotoDars = document.querySelectorAll(".goto-dars");
+    gotoDars.forEach(goto => {
+      goto.addEventListener("click", () => {
+        showSection();
+        document.querySelector("header").classList.add("hidden");
+        document.querySelector("main").classList.add("hidden");
+        document.querySelector("footer").classList.add("hidden");
+      });
+    });
 
     trending.appendChild(div);
   });
@@ -136,6 +185,30 @@ const content = document.getElementById("playing"),
   repeatBtn = document.getElementById("repeat"),
   Playimage = document.getElementById("audio-thumb"),
   timer = document.getElementById("timer");
+
+// hiding the floating player button
+window.addEventListener("DOMContentLoaded", () => {
+  let clicks = 0;
+  playPause.addEventListener("click", () => {
+    clicks++;
+  });
+
+  if (clicks > 0 && content.classList.contains("hidden")) {
+    floatPlay.classList.remove("hidden");
+  };
+});
+
+// leaving the player screen
+document.getElementById("arrow-back").addEventListener("click", () => {
+  content.classList.add("hidden");
+  document.querySelector("header").classList.remove("hidden");
+  document.querySelector("main").classList.remove("hidden");
+  document.querySelector("footer").classList.remove("hidden");
+
+  if (clicks > 0 && content.classList.contains("hidden")) {
+    floatPlay.classList.remove("hidden");
+  };
+});
 
 let duruus = [
   {
@@ -229,10 +302,12 @@ backwards15.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () => {
   nextDarsu();
+  spinner.classList.replace("anim-paused", "anim-running")
 });
 
 prevBtn.addEventListener("click", () => {
   prevDarsu();
+  spinner.classList.replace("anim-paused", "anim-running")
 });
 
 function nextDarsu() {
